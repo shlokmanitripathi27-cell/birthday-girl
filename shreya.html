@@ -1,0 +1,304 @@
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Shreya ❤️</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:linear-gradient(135deg,#ff9a9e,#fad0c4);
+overflow:hidden;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+}
+
+.screen{
+position:absolute;
+width:100%;
+height:100%;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:20px;
+transition:1s;
+}
+
+.hidden{
+opacity:0;
+pointer-events:none;
+}
+
+h1{
+color:white;
+margin-bottom:20px;
+text-shadow:0 0 10px rgba(255,255,255,.7);
+}
+
+button{
+padding:15px 30px;
+font-size:18px;
+border:none;
+border-radius:50px;
+background:#ff4f81;
+color:white;
+cursor:pointer;
+box-shadow:0 0 20px rgba(255,0,128,.5);
+}
+
+button:hover{
+transform:scale(1.05);
+}
+
+.count{
+font-size:120px;
+color:white;
+font-weight:bold;
+}
+
+.photo{
+width:300px;
+max-width:85%;
+border-radius:25px;
+box-shadow:0 0 25px rgba(255,255,255,.8);
+animation:zoom 4s ease;
+}
+
+@keyframes zoom{
+from{transform:scale(.8);opacity:0;}
+to{transform:scale(1);opacity:1;}
+}
+
+.cake{
+font-size:120px;
+animation:bounce 1s infinite;
+}
+
+@keyframes bounce{
+50%{transform:translateY(-10px);}
+}
+
+.message-box{
+max-width:800px;
+background:rgba(255,255,255,.18);
+backdrop-filter:blur(10px);
+padding:25px;
+border-radius:20px;
+color:white;
+font-size:20px;
+line-height:1.8;
+overflow:auto;
+max-height:80vh;
+}
+
+.heart{
+position:absolute;
+bottom:-50px;
+font-size:24px;
+animation:float 8s linear infinite;
+}
+
+@keyframes float{
+0%{
+transform:translateY(0);
+opacity:0;
+}
+20%{
+opacity:1;
+}
+100%{
+transform:translateY(-110vh);
+opacity:0;
+}
+}
+</style>
+</head>
+<body>
+
+<!-- SCREEN 1 -->
+<div id="screen1" class="screen">
+<h1>❤️ Hey Shreya ❤️</h1>
+<h2 style="color:white;margin-bottom:20px;">
+I have something special for you...
+</h2>
+<button onclick="startExperience()">🎵 Play Music</button>
+</div>
+
+<!-- SCREEN 2 -->
+<div id="screen2" class="screen hidden">
+<div id="count" class="count">3</div>
+</div>
+
+<!-- SCREEN 3 -->
+<div id="screen3" class="screen hidden">
+<h1>❤️ My Beautiful Girl ❤️</h1>
+<img src="Snapchat-829416052.jpg" class="photo">
+</div>
+
+<!-- SCREEN 4 -->
+<div id="screen4" class="screen hidden">
+<h1>💖 Forever Us 💖</h1>
+<img src="Snapchat-689683426.jpg" class="photo">
+</div>
+
+<!-- SCREEN 5 -->
+<div id="screen5" class="screen hidden">
+<h1>🎂 Happy Birthday Shreya 🎂</h1>
+<div class="cake">🎂</div>
+<br>
+<button onclick="cutCake()">Cut The Cake ❤️</button>
+</div>
+
+<!-- SCREEN 6 -->
+<div id="screen6" class="screen hidden">
+<div class="message-box">
+<h1>❤️ Happy Birthday Shreya ❤️</h1>
+<p id="typewriter"></p>
+</div>
+</div>
+
+<audio id="music" loop>
+<source src="Tujhe Kitna Chahne Lage Kabir Singh 320 Kbps.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+
+const music=document.getElementById("music");
+
+function startExperience(){
+
+music.play();
+
+document.getElementById("screen1").classList.add("hidden");
+
+document.getElementById("screen2").classList.remove("hidden");
+
+let count=3;
+
+const interval=setInterval(()=>{
+
+count--;
+
+document.getElementById("count").innerHTML=count;
+
+if(count===0){
+
+clearInterval(interval);
+
+document.getElementById("screen2").classList.add("hidden");
+
+setTimeout(()=>{
+document.getElementById("screen3").classList.remove("hidden");
+},500);
+
+setTimeout(()=>{
+document.getElementById("screen3").classList.add("hidden");
+document.getElementById("screen4").classList.remove("hidden");
+},5000);
+
+setTimeout(()=>{
+document.getElementById("screen4").classList.add("hidden");
+document.getElementById("screen5").classList.remove("hidden");
+},10000);
+
+}
+
+},1000);
+
+}
+
+function cutCake(){
+
+document.getElementById("screen5").classList.add("hidden");
+
+setTimeout(()=>{
+document.getElementById("screen6").classList.remove("hidden");
+startTyping();
+floatingHearts();
+},500);
+
+}
+
+const text=`
+
+Happiest birthday my precious person.
+
+Thank you for coming into my life.
+You make my life colourful and joyful.
+
+You are my best decision that I have ever made in my life until now.
+
+You are just perfect for me.
+
+I like your everything,
+how you console me,
+take care of me.
+
+I ❤️ U
+
+Happy Birthday ❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️
+
+Forever Yours ❤️
+`;
+
+let i=0;
+
+function startTyping(){
+
+function typeWriter(){
+
+if(i<text.length){
+
+document.getElementById("typewriter").innerHTML += text.charAt(i);
+
+i++;
+
+setTimeout(typeWriter,40);
+
+}
+
+}
+
+typeWriter();
+
+}
+
+function floatingHearts(){
+
+setInterval(()=>{
+
+const heart=document.createElement("div");
+
+heart.classList.add("heart");
+
+heart.innerHTML="❤️";
+
+heart.style.left=Math.random()*100+"vw";
+
+heart.style.fontSize=(20+Math.random()*30)+"px";
+
+document.body.appendChild(heart);
+
+setTimeout(()=>{
+heart.remove();
+},8000);
+
+},300);
+
+}
+
+</script>
+
+</body>
+</html>
